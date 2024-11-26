@@ -6,8 +6,8 @@ import { baseCompile } from "@mini-vue/compiler-core";
 
 export * from "@mini-vue/runtime-dom";
 
-
 function compileToFunction(template, options = {}) {
+  console.info("compileToFunction", template, options);
   const { code } = baseCompile(template, options);
 
   // 调用 compile 得到的代码在给封装到函数内，
@@ -17,4 +17,5 @@ function compileToFunction(template, options = {}) {
   return render;
 }
 
+console.log("registerRuntimeCompiler");
 registerRuntimeCompiler(compileToFunction);

@@ -78,6 +78,7 @@ let renderer;
 
 function ensureRenderer() {
   // 如果 renderer 有值的话，那么以后都不会初始化了
+
   return (
     renderer ||
     (renderer = createRenderer({
@@ -93,7 +94,8 @@ function ensureRenderer() {
 }
 
 export const createApp = (...args) => {
+  console.info("createApp", args);
   return ensureRenderer().createApp(...args);
 };
 
-export * from "@mini-vue/runtime-core"
+export * from "@mini-vue/runtime-core";

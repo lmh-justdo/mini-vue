@@ -1,7 +1,10 @@
 import { h, ref } from "../../dist/mini-vue.esm-bundler.js";
 
 const count = ref(0);
-
+const obj = ref({
+  a: 1,
+  b: 2,
+});
 const HelloWorld = {
   name: "HelloWorld",
   setup() {},
@@ -16,7 +19,7 @@ const HelloWorld = {
     return h(
       "div",
       { tId: "helloWorld" },
-      `hello world: count: ${count.value}`
+      `hello world: count: ${count.value} `
     );
   },
 };
@@ -26,6 +29,10 @@ export default {
   setup() {},
 
   render() {
-    return h("div", { tId: 1 }, [h("p", {}, "主页"), h(HelloWorld)]);
+    return h("div", { tId: 1 }, [
+      h("p", {}, "主页"),
+      h(HelloWorld),
+      h("button", { onClick: () => (obj.value.a += 1) }, "点我" + obj.value.a),
+    ]);
   },
 };

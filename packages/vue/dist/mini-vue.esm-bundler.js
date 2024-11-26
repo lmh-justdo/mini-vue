@@ -87,6 +87,7 @@ function createAppAPI(render) {
         const app = {
             _component: rootComponent,
             mount(rootContainer) {
+                console.log("rootContainer", rootContainer);
                 console.log("基于根组件创建 vnode");
                 const vnode = createVNode(rootComponent);
                 console.log("调用 render，基于 vnode 进行开箱");
@@ -514,6 +515,7 @@ function handleSetupResult(instance, setupResult) {
     finishComponentSetup(instance);
 }
 function finishComponentSetup(instance) {
+    console.log("finishComponentSetup", instance);
     const Component = instance.type;
     if (!instance.render) {
         if (compile && !Component.render) {
@@ -1115,6 +1117,7 @@ function ensureRenderer() {
         })));
 }
 const createApp = (...args) => {
+    console.info("createApp", args);
     return ensureRenderer().createApp(...args);
 };
 
@@ -1590,10 +1593,12 @@ function baseCompile(template, options) {
 }
 
 function compileToFunction(template, options = {}) {
+    console.info("compileToFunction", template, options);
     const { code } = baseCompile(template, options);
     const render = new Function("Vue", code)(runtimeDom);
     return render;
 }
+console.log("registerRuntimeCompiler");
 registerRuntimeCompiler(compileToFunction);
 
 export { computed, createApp, createAppAPI, createVNode as createElementVNode, createRenderer, createTextVNode, effect, getCurrentInstance, h, inject, isProxy, isReactive, isReadonly, isRef, provide, proxyRefs, reactive, readonly, ref, registerRuntimeCompiler, renderSlot, shallowReadonly, stop, toDisplayString, unRef, watchEffect };

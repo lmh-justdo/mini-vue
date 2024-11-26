@@ -119,6 +119,7 @@ function handleSetupResult(instance, setupResult) {
 }
 
 function finishComponentSetup(instance) {
+  console.log("finishComponentSetup", instance);
   // 给 instance 设置 render
 
   // 先取到用户设置的 component options
