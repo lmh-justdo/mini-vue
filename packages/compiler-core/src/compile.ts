@@ -6,6 +6,7 @@ import { transformElement } from "./transforms/transformElement";
 import { transformText } from "./transforms/transformText";
 
 export function baseCompile(template, options) {
+  console.log("baseCompile start", template);
   // 1. 先把 template 也就是字符串 parse 成 ast
   const ast = baseParse(template);
   // 2. 给 ast 加点料（- -#）

@@ -53,6 +53,7 @@ const createVNode = function (type, props, children) {
         vnode.shapeFlag |= 8;
     }
     normalizeChildren(vnode, children);
+    console.log('createVNode', vnode);
     return vnode;
 };
 function normalizeChildren(vnode, children) {
@@ -522,6 +523,7 @@ function finishComponentSetup(instance) {
     console.log("finishComponentSetup", instance);
     const Component = instance.type;
     if (!instance.render) {
+        console.log("finishComponentSetup !instance.render逻辑");
         if (compile && !Component.render) {
             if (Component.template) {
                 const template = Component.template;
@@ -654,7 +656,7 @@ function hasPropsChanged(prevProps, nextProps) {
 function createRenderer(options) {
     const { createElement: hostCreateElement, setElementText: hostSetElementText, patchProp: hostPatchProp, insert: hostInsert, remove: hostRemove, setText: hostSetText, createText: hostCreateText, } = options;
     const render = (vnode, container) => {
-        console.log("调用 patch");
+        console.log("render 调用 patch");
         patch(null, vnode, container);
     };
     function patch(n1, n2, container = null, anchor = null, parentComponent = null) {
@@ -1589,6 +1591,7 @@ function transformText(node, context) {
 }
 
 function baseCompile(template, options) {
+    console.log("baseCompile start", template);
     const ast = baseParse(template);
     transform(ast, Object.assign(options, {
         nodeTransforms: [transformElement, transformText, transformExpression],

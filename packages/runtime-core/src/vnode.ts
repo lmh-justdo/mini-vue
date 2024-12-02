@@ -32,6 +32,7 @@ export const createVNode = function (
 
   normalizeChildren(vnode, children);
 
+  console.log('createVNode', vnode);
   return vnode;
 };
 

@@ -19,7 +19,7 @@ export function createRenderer(options) {
   } = options;
 
   const render = (vnode, container) => {
-    console.log("调用 patch")
+    console.log("render 调用 patch");
     patch(null, vnode, container);
   };
 
@@ -165,12 +165,11 @@ export function createRenderer(options) {
         mountChildren(c2, container);
       } else {
         // array diff array
-      // 如果之前是 array_children
-      // 现在还是 array_children 的话
-      // 那么我们就需要对比两个 children 啦
+        // 如果之前是 array_children
+        // 现在还是 array_children 的话
+        // 那么我们就需要对比两个 children 啦
         patchKeyedChildren(c1, c2, container, parentComponent, anchor);
       }
-
     }
   }
 

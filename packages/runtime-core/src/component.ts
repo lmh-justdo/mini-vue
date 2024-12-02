@@ -126,6 +126,7 @@ function finishComponentSetup(instance) {
   const Component = instance.type;
 
   if (!instance.render) {
+    console.log("finishComponentSetup !instance.render逻辑");
     // 如果 compile 有值 并且当组件没有 render 函数，那么就需要把 template 编译成 render 函数
     if (compile && !Component.render) {
       if (Component.template) {
