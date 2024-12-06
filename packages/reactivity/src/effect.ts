@@ -90,7 +90,9 @@ export function track(target, type, key) {
   if (!isTracking()) {
     return;
   }
-  console.log(`触发 track -> target: ${target} type:${type} key:${key}`);
+  console.log(
+    `触发 track -> target: ${JSON.stringify(target)} type:${type} key:${key}`
+  );
   // 1. 先基于 target 找到对应的 dep
   // 如果是第一次的话，那么就需要初始化
   let depsMap = targetMap.get(target);
